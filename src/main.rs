@@ -1,16 +1,13 @@
 use std::{net::SocketAddr, sync::Arc};
 
 use axum::{extract::State, Json, Router};
-use log::info;
 use serde_json::Value;
 use tokio::sync::Mutex;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    env_logger::init();
-
-    let port = 3000;
-    info!("starting test service on port: {port}");
+    let port = 80;
+    println!("starting test service on port: {port}");
 
     let state = CountState {
         counter: Arc::new(Mutex::new(0)),
