@@ -6,7 +6,7 @@ use tokio::sync::Mutex;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let port = 80;
+    let port = std::env::var("PORT").unwrap_or("3000".to_string()).parse::<u16>().expect("could not parse PORT env var");
     println!("starting test service on port: {port}");
 
     let state = CountState {
